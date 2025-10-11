@@ -64,7 +64,7 @@ const ContextProvider = (props) => {
     }));
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/caBuddy/", {
+      const response = await fetch("https://cabuddybackend.onrender.com/caBuddy/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -95,7 +95,7 @@ const ContextProvider = (props) => {
 
   const deleteChat = async (chatId) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/deleteChat", {
+      const response = await fetch("https://cabuddybackend.onrender.com/deleteChat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ session_id: `${sessionId}${chatId}` }),
