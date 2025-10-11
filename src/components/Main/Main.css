@@ -1,195 +1,257 @@
 .main {
-    flex: 1;
-    min-height: 100vh;
-    padding-bottom: 15vh;
-    position: relative;
+  flex: 1;
+  min-height: 50vh;
+  position: relative;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent overflow from main container */
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensure full viewport height */
+  padding-bottom: 60px; /* Initial space; will be overridden dynamically */
 }
 
 .main .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 22px;
-    font-weight: 400;
-    padding: 20px;
-    color: #585858;
-}
-
-.main .nav img {
-    width: 40px;
-    border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 400;
+  padding: 20px 0;
+  color: #585858;
+  flex-shrink: 0; /* Prevent nav from shrinking */
 }
 
 .main-container {
-    max-width: 900px;
-    margin: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Take remaining space */
+  min-height: 0; /* Important for Firefox flex children */
+  overflow: hidden; /* Prevent container overflow */
+  height: calc(100% - 60px); /* Initial; will be overridden dynamically */
 }
 
-.main .greet {
-    margin: 17px 0px;
-    font-size: 56px;
-    color: #c4c7c5;
-    font-weight: 500;
-    padding: 20px;
-}
-
-.main .greet span {
-    background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.main .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
-    gap: 15px;
-    padding: 20px;
-}
-
-.main .card {
-    height: 200PX;
-    padding: 15px;
-    background-color: #f0f4f9;
-    position: relative;
-    cursor: pointer;
-}
-
-.main .card img {
-    width: 35px;
-    padding: 5px;
-    position: absolute;
-    background-color: white;
-    border-radius: 20px;
-    bottom: 10px;
-    right: 10px;
-}
-.main .card p {
-    color: #585858;
-    font-size: 17px;
-}
-
-.main .card:hover {
-    background-color: #dfe4ea;
-}
-
-.main-bottom {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    max-width: 900px;
-    padding: 0px 20px;
-    margin: auto;
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    background-color: #f0f4f9;
-    padding: 10px 20px;
-    border-radius: 50px;
-}
-
-.search-box img {
-    width: 24px;
-    cursor: pointer;
-}
-
-.search-box input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 8px;
-    font-size: 18px;   
-}
-
-.search-box div {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.main .bottom-info {
-    font-size: 13px;
-    margin: 15px auto;
-    text-align: center;
-    font-weight: 300;
-}
-
-.result{
-    padding: 0px 5%;
-    max-height: 70vh;
-    overflow-y: scroll;
+.result {
+  flex: 1;
+  overflow-y: auto; /* Only show scrollbar when needed */
+  padding: 0; /* Remove default padding */
+  box-sizing: border-box;
+  min-height: 0; /* Important for proper flex behavior */
 }
 
 .result::-webkit-scrollbar {
-    display: none;
+  width: 8px; /* Show scrollbar but make it subtle */
 }
 
-.result-title {
-    margin: 40px 0px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.result::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.result img {
-    width: 40px;
-    border-radius: 50%;
+.result::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 4px;
 }
 
-.result-data {
-    display: flex;
-    align-items: start;
-    gap: 20px;
+.result::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
 }
 
-.loader {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.main-bottom {
+  width: 60%;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  flex-shrink: 0; /* Prevent bottom from shrinking */
+  position: fixed; /* Fix at bottom */
+  bottom: 0;
+  left: 20%;
+  right:20%;
+  bottom:5%;
+  background-color: #fff; /* Match background to avoid overlap issues */
+  z-index: 10; /* Ensure it stays above other content */
+  height: auto; /* Allow growth */
+  min-height: 60px; /* Minimum height */
 }
 
-.loader hr {
-    border-radius: 4px;
-    border: none;
-    background-color: #f6f7f8;
-    background: linear-gradient(to right, #9ed7ff, #ffffff, #9ed7ff);
-    background-size: 800px 50px;
-    height: 20px;
-    animation: loader 3s infinite linear;
+.search-box {
+  display: flex;
+  align-items: flex-end; /* Align to bottom for better multi-line feel */
+  gap: 10px;
+  background-color: #f0f4f9;
+  padding: 10px;
+  border-radius: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  height: auto; /* Allow growth */
 }
 
-@keyframes loader {
-    0%{
-        background-position: -800px 0px;
-    }
-    100%{
-        background-position: 800px 0px;
-    }
+.search-box textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  min-width: 0; /* Prevent input from overflowing */
+  resize: none; /* Disable manual resize */
+  overflow: hidden; /* Hide scrollbar during growth */
+  line-height: 1.5; /* Better line spacing */
+  min-height: 20px; /* Initial height */
+  max-height: 200px; /* Prevent excessive growth; add scrollbar if needed */
 }
 
-.result-data p {
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 1.8;
+.search-box div {
+  display: flex;
+  align-items: center;
 }
 
-@media (max-width:600px) {
-    .main-bottom input {
-        flex: none;
-        width: 150px;
-    }
-    .main-bottom img {
-        width: 20px;
-    }
-    .search-box {
-        padding: 5px 10px;
-    }
-    .search-box div {
-        gap: 5px;
-    }
+.main .bottom-info {
+  font-size: 13px;
+  margin: 10px 0 0 0;
+  text-align: center;
+  font-weight: 300;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f0f0f0;
+  border-top: 3px solid #000000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Message styles */
+.message-container {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.message-container.user {
+  justify-content: flex-end;
+}
+
+.message-container.assistant {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 95%;
+  padding: 10px;
+  border-radius: 10px;
+  word-wrap: break-word;
+  font-size: 20px; /* keep if you want larger text */
+  /* normal white-space so consecutive newlines collapse */
+  white-space: normal;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+
+
+.message-bubble.user {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.message-bubble.assistant {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+
+.main .nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 400;
+  padding: 20px 0;
+  color: #585858;
+  flex-shrink: 0; /* Prevent nav from shrinking */
+}
+
+/* New welcome message styles */
+.welcome-message {
+  font-size: 32px;
+  font-weight: bold;
+  color: #585858;
+  text-align: center;
+}
+
+.message-bubble table {
+  border-collapse: collapse;
+  margin: 0.4em 0; /* reduced from 1em */
+  width: 100%;
+}
+
+.message-bubble th,
+.message-bubble td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.message-bubble th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.message-bubble ul, .message-bubble ol {
+  padding-left: 20px;
+  margin: 0.25em 0; /* reduced from 0.5em */
+}
+
+.message-bubble li {
+  margin-bottom: 0.5em;
+}
+
+/* Replace the existing .message-bubble p rule with this (smaller margins) */
+.message-bubble p {
+  margin: 0.08em 0; /* reduced from 0.15em (and from older 0.5em) */
+  line-height: 1.45; /* slightly tighter line height to help with dense content */
+}
+
+.message-bubble blockquote {
+  border-left: 4px solid #ccc;
+  margin: 1em 0;
+  padding-left: 1em;
+  font-style: italic;
+}
+
+.message-bubble code {
+  background-color: #f0f0f0;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.message-bubble pre {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.message-bubble h1, .message-bubble h2, .message-bubble h3 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+/* Emojis & separators */
+.message-bubble hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2em 0;
 }
