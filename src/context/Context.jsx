@@ -64,7 +64,7 @@ const ContextProvider = (props) => {
     }));
 
     try {
-      const response = await fetch("http://54.234.33.13:8000/caBuddy/", {
+      const response = await fetch("https://cabuddy.duckdns.org/caBuddy/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -95,7 +95,7 @@ const ContextProvider = (props) => {
 
   const deleteChat = async (chatId) => {
     try {
-      const response = await fetch("http://54.234.33.13:8000/deleteChat", {
+      const response = await fetch("https://cabuddy.duckdns.org/deleteChat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ session_id: `${sessionId}${chatId}` }),
